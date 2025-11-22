@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿辰壁纸样机生成器</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>阿辰壁纸样机生成器</h1>
+        </header>
+        
+        <div class="main-content">
+            <!-- 左侧控制面板 -->
+            <div class="control-panel">
+                <div class="upload-section">
+                    <div class="upload-section">
+                        <h3>上传壁纸</h3>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-placeholder" id="uploadPlaceholder">
+                                <i class="fa-solid fa-images"></i>
+                                <span>点击或拖拽上传图片（支持多选）</span>
+                            </div>
+                            <div class="upload-thumbnails" id="uploadThumbnails" style="display: none;">
+                                <!-- 缩略图将动态添加到这里 -->
+                            </div>
+                            <input type="file" id="imageUpload" accept="image/*" multiple hidden>
+                        </div>
+                        <div class="image-counter" id="imageCounter" style="display: none;">
+                            <span>已选择 <span id="imageCount">0</span> 张图片</span>
+                            <div class="counter-actions">
+                                <button class="continue-upload" id="continueUpload">
+                                    <i class="fa-solid fa-plus"></i> 继续上传
+                                </button>
+                                <button class="clear-images" id="clearImages">清空</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="template-section">
+                    <h3>选择设备模板</h3>
+                    <div class="template-grid" id="templateGrid">
+                        <!-- 模板将通过JS动态加载 -->
+                    </div>
+                </div>
+                
+                <div class="settings-section">
+                    <h3>设置</h3>
+                    <div class="setting-item">
+                        <label>背景颜色：</label>
+                        <input type="color" id="bgColor" value="#ffffff">
+                    </div>
+                    <div class="setting-item">
+                        <label>图片缩放：</label>
+                        <input type="range" id="scaleSlider" min="50" max="200" value="100">
+                    </div>
+                </div>
+                
+                <button id="downloadBtn" class="download-btn"><i class="fa-solid fa-download"></i> 下载样机图片</button>
+            </div>
+            
+            <!-- 右侧预览区域 -->
+            <div class="preview-section">
+                <div class="preview-toolbar">
+                    <div class="device-label">预览设备：<span id="deviceName">未选择</span></div>
+                    <div class="toolbar-actions">
+                        <button id="zoomFit" class="icon-btn" title="适应画布"><i class="fa-solid fa-arrows-left-right"></i></button>
+                    </div>
+                </div>
+                <div class="preview-container">
+                    <canvas id="previewCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.0/fabric.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
